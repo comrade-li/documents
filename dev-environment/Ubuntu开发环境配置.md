@@ -216,6 +216,7 @@ git clone https://github.com/Mintimate/oh-my-rime.git ~/.config/ibus/rime
     ```shell
     cd ~/Projects/documents/dev-environment/fonts && 
     sudo tar -vxJf sarasa-ui-sc.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -vxJf jetbrains-mono.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -vxJf intel-one-mono.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -vxJf lxgw-wenkai-mono.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -vxJf source-code-pro.tar.xz -C /usr/share/fonts/truetype && 
