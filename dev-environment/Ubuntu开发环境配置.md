@@ -239,3 +239,8 @@ sudo chown root:root ~/.softwares/idea-IU/jbr/lib/chrome-sandbox && sudo chmod 4
 ```shell
 sudo apt remove gnome-2048 gnome-contacts gnome-weather gnome-clocks gnome-maps aisleriot gnome-calendar gnome-video-effects gnome-chess simple-scan five-or-more four-in-a-row hitori gnome-chess im-config gnome-klotski lightsoff gnome-mahjongg gnome-mines gnome-music gnome-nibbles quadrapassel iagno rhythmbox gnome-robots shotwell gnome-sound-recorder gnome-sudoku swell-foop tali gnome-taquin gnome-tetravex gnome-text-editor transmission-gtk evolution synaptic totem gnome-software libreoffice-*
 ```
+
+安装常用字体
+```shell
+sudo apt install fonts-arphic-ukai fonts-arphic-uming fonts-dejavu-core fonts-dejavu-mono fonts-droid-fallback fonts-liberation-sans-narrow fonts-liberation fonts-noto-cjk-extra fonts-noto-cjk fonts-noto-color-emoji fonts-noto-core fonts-noto-mono fonts-ubuntu fonts-urw-base35
+```
