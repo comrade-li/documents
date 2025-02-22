@@ -111,6 +111,8 @@ export PATH MANPATH INFOPATH TEXLIVE_HOME JAVA_HOME GRADLE_HOME GRADLE_USER_HOME
 
 ## 6. 配置桥接网络
 
+### 6.1 Ubuntu netplan桥接网络配置
+
 添加配置文件
 
 ```shell
@@ -147,7 +149,43 @@ network:
 sudo netplan apply
 ```
 
-## 6. 配置ssh和git
+### 6.2 Debian桥接网络配置
+
+添加配置文件
+
+```shell
+sudo vim /etc/network/interfaces.d/network-bridge0
+```
+
+```shell
+## 获取静态IP配置 ##
+auto bridge0
+iface bridge0 inet static
+address 192.168.1.10
+broadcast 192.168.0.255
+netmask 255.255.255.0
+gateway 192.168.1.1
+
+
+bridge_ports enp6s0
+
+# 禁用生成树协议
+bridge_stp off 
+
+# 端口可用之前没有延迟
+bridge_waitport 0
+
+# 无转发延迟
+bridge_fd 0
+```
+
+重启网络
+
+```shell
+sudo systemctl restart networking.service
+```
+
+## 7. 配置ssh和git
 
 1. 配置ssh
 
@@ -161,7 +199,7 @@ sudo netplan apply
     git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade Li"
     ```
 
-## 7. 安装并配置oh-my-zsh
+## 8. 安装并配置oh-my-zsh
 
 1. 安装oh-my-zsh
 
@@ -197,13 +235,13 @@ sudo netplan apply
     sed -i 's/plugins=(git)/plugins=(\n  git\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n)\nsource ~\/.profile/g' ~/.zshrc
     ```
 
-## 8. 安装oh-my-rime输入法
+## 9. 安装oh-my-rime输入法
 
 ```shell
 git clone https://github.com/Mintimate/oh-my-rime.git ~/.config/ibus/rime
 ```
 
-## 9. 安装字体
+## 10. 安装字体
 
 1. 拉取配置
 
@@ -228,19 +266,20 @@ git clone https://github.com/Mintimate/oh-my-rime.git ~/.config/ibus/rime
     fc-cache -fv && sudo fc-cache -fsv && fc-cache -fsv
     ```
 
-## 10. JetBrains idea的chrome-sandbox权限问题
+## 11. JetBrains idea的chrome-sandbox权限问题
 
 ```shell
 sudo chown root:root ~/.softwares/idea-IU/jbr/lib/chrome-sandbox && sudo chmod 4755 ~/.softwares/idea-IU/jbr/lib/chrome-sandbox
 ```
 
-## 11. Debian 12卸载无用软件
+## 12. Debian 12卸载无用软件
 
 ```shell
 sudo apt remove gnome-2048 gnome-contacts gnome-weather gnome-clocks gnome-maps aisleriot gnome-calendar gnome-video-effects gnome-chess simple-scan five-or-more four-in-a-row hitori gnome-chess im-config gnome-klotski lightsoff gnome-mahjongg gnome-mines gnome-music gnome-nibbles quadrapassel iagno rhythmbox gnome-robots shotwell gnome-sound-recorder gnome-sudoku swell-foop tali gnome-taquin gnome-tetravex gnome-text-editor transmission-gtk evolution synaptic totem gnome-software libreoffice-*
 ```
 
 安装常用字体
+
 ```shell
-sudo apt install fonts-arphic-ukai fonts-arphic-uming fonts-dejavu-core fonts-dejavu-mono fonts-droid-fallback fonts-liberation-sans-narrow fonts-liberation fonts-noto-cjk-extra fonts-noto-cjk fonts-noto-color-emoji fonts-noto-core fonts-noto-mono fonts-ubuntu fonts-urw-base35
+sudo apt install fonts-arphic-ukai fonts-arphic-uming fonts-dejavu-core fonts-droid-fallback fonts-liberation fonts-noto-cjk-extra fonts-noto-cjk fonts-noto-color-emoji fonts-noto-core fonts-noto-mono fonts-ubuntu fonts-urw-base35
 ```
